@@ -55,7 +55,7 @@ class TestCase
         total++;
         stringstream ss;
         ss << a;
-        if (ss.str().equals(b)
+        if (ss.str() == b)
         {
             passed++;
         }
@@ -71,13 +71,13 @@ class TestCase
     TestCase &check_function(Function func, T a, int b)
     {
         total++;
-        if ((*fun)(a) == b)
+        if ((*func)(a) == b)
         {
             passed++;
         }
         else
         {
-            cout << testcase << " Failed. Failure in test number " << total << ". Function should return " << b << " but returned " << (*fun)(a) << "." << endl;
+            cout << testcase << " Failed. Failure in test number " << total << ". Function should return " << b << " but returned " << (*func)(a) << "." << endl;
             failed++;
         }
         return *this;
