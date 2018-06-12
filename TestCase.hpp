@@ -11,16 +11,10 @@ class TestCase
     string testcase; // case name
     ostream stream;
     int total, failed, passed;
+  
+    TestCase(string name , ostream& os);
     friend ostream& operator<<(ostream& os, TestCase& obj);
     void print();
-
-    TestCase(string name, ostream &os):stream(os.rdbuf()) // constructor
-    {
-        testcase = name;
-        total = 0;
-        failed = 0;
-        passed = 0;
-    }
 
     template <typename T>
     TestCase &check_equal(T a, T b)
