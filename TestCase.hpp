@@ -9,7 +9,7 @@ class TestCase
 
   public:
     string testcase; // case name
-    ostream os;
+    ostream stream;
     int total, failed, passed;
     friend ostream& operator<<(ostream& os, TestCase& obj);
     void print();
