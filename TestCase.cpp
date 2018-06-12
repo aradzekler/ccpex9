@@ -6,7 +6,7 @@ TestCase::TestCase(string name , ostream& os):total(0),failed(0),passed(0),strea
 
 void TestCase::print()
 {
-    stream << namecase << ": " << failed << " tests failed, " << passed << " tests passed, " << total << " total." << endl << endl;
+    stream << testcase << ": " << failed << " tests failed, " << passed << " tests passed, " << total << " total." << endl << endl;
     cout << *this;
 }
 
