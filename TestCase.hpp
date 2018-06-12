@@ -14,10 +14,9 @@ class TestCase
     friend ostream& operator<<(ostream& os, TestCase& obj);
     void print();
 
-    TestCase(string name, ostream &os) // constructor
+    TestCase(string name, ostream &os):stream(os.rdbuf()) // constructor
     {
         testcase = name;
-        stream = os.rdbuf();
         total = 0;
         failed = 0;
         passed = 0;
