@@ -16,8 +16,7 @@ class TestCase
     friend ostream& operator<<(ostream& os, TestCase& obj);
     void print();
 
-    template <typename T>
-    TestCase &check_equal(T a, T b)
+    template <typename T> TestCase &check_equal(T a, T b)
     {
         total++;
         if (a == b)
@@ -32,8 +31,7 @@ class TestCase
         return *this;
     }
 
-    template <typename T>
-    TestCase &check_different(T a, T b)
+    template <typename T> TestCase &check_different(T a, T b)
     {
         total++;
         if (a != b)
@@ -48,8 +46,7 @@ class TestCase
         return *this;
     }
 
-    template <typename T>
-    TestCase &check_output(T a, string b)
+    template <typename T> TestCase &check_output(T a, string b)
     {
         total++;
         stringstream ss;
@@ -65,10 +62,9 @@ class TestCase
         }
         return *this;
     }
-
-    template <typename T, typename Function>
-    TestCase &check_function(Function func, T a, int b)
-    {
+ 
+  template <typename T, typename Function> TestCase &check_function(Function func, T a, int b)
+  {
         total++;
         if ((*func)(a) == b)
         {
