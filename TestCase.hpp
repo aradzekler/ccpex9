@@ -1,78 +1,77 @@
 #pragma once
 #include <iostream>
 #include <sstream>
-
 using namespace std;
 
 class TestCase
 {
 
   public:
-    string testcase; // case name
-    ostream stream;
     int total, failed, passed;
-  
-    TestCase(string name , ostream& os);
-    friend ostream& operator<<(ostream& os, TestCase& obj);
+    ostream stream;
+    string testcase;
+    TestCase(string name, ostream &os);
     void print();
+    friend ostream &operator<<(ostream &os, TestCase &obj);
 
-    template <typename T> TestCase &check_equal(T a, T b)
+    template <typename T>
+    TestCase &check_equal(T a, T b)
     {
         total++;
         if (a == b)
         {
-            passed++; // is equal
+            passed++;
         }
         else
         {
-            stream << testcase << " Failed. Failure in test number " << total << ". " << a << " is NOT equal to " << b << "." << endl;
+            stream << testcase << ": Failure in test " << total << ": " << a << " should equal " << b << endl;
             failed++;
         }
         return *this;
     }
-
-    template <typename T> TestCase &check_different(T a, T b)
+    template <typename T>
+    TestCase &check_different(T a, T b)
     {
         total++;
         if (a != b)
         {
-            passed++; // is not equal
+            passed++;
         }
         else
         {
-            stream << testcase << " Failed. Failure in test number " << total << ". " << a << " is equal to " << b << "." << endl;
+            stream << testcase << ": Failure in test " << total << ": " << a << " should not equal " << b << endl;
             failed++;
         }
         return *this;
     }
-
-    template <typename T> TestCase &check_output(T a, string b)
+    template <typename T>
+    TestCase &check_output(T a, string b)
     {
-        total++;
-        stringstream ss;
+        ostringstream ss;
         ss << a;
+        total++;
         if (ss.str() == b)
         {
             passed++;
         }
         else
         {
-            stream << testcase << " Failed. Failure in test number " << total << ". String should be " << b << " but is " << ss.str() << endl;
+            stream << testcase << ": Failure in test " << total << ": string value should be " << b << " but is " << a << endl;
             failed++;
         }
         return *this;
     }
- 
-  template <typename T, typename Function> TestCase &check_function(Function func, T a, int b)
-  {
+    template <typename T, typename Func>
+    TestCase &check_function(Func fun, T a, int b)
+    {
         total++;
-        if ((*func)(a) == b)
+        if ((*fun)(a) == b)
         {
             passed++;
         }
         else
         {
-            stream << testcase << " Failed. Failure in test number " << total << ". Function should return " << b << " but returned " << (*func)(a) << "." << endl;
+            stream << testcase << ": Failure in test " << total << ": Function should return " << b << " but returned " << (*fun)(a) << "!" << endl;
             failed++;
         }
         return *this;
