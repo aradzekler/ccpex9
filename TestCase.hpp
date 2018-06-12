@@ -9,12 +9,10 @@ class TestCase
   public:
     int total, failed, passed;
     ostream stream;
-    string name;
-  
+    string namecase;
     TestCase(string name, ostream &os);
     void print();
     friend ostream &operator<<(ostream &os, TestCase &obj);
-
     template <typename T>
     TestCase &check_equal(T a, T b)
     {
@@ -25,7 +23,7 @@ class TestCase
         }
         else
         {
-            stream << this->name << ": Failure in test " << total << ": " << a << " should equal " << b << endl;
+            stream << namecase << ": Failure in test #" << total << ": " << a << " should equal " << b << "!" << endl;
             failed++;
         }
         return *this;
@@ -40,7 +38,7 @@ class TestCase
         }
         else
         {
-            stream << this->name << ": Failure in test " << total << ": " << a << " should not equal " << b << endl;
+            stream << namecase << ": Failure in test #" << total << ": " << a << " should not equal " << b << "!" << endl;
             failed++;
         }
         return *this;
@@ -57,7 +55,7 @@ class TestCase
         }
         else
         {
-            stream << this->name << ": Failure in test " << total << ": string value should be " << b << " but is " << a << endl;
+            stream << namecase << ": Failure in test #" << total << ": string value should be " << b << " but is " << a << endl;
             failed++;
         }
         return *this;
@@ -72,7 +70,7 @@ class TestCase
         }
         else
         {
-            stream << this->name << ": Failure in test " << total << ": Function should return " << b << " but returned " << (*fun)(a) << "!" << endl;
+            stream << namecase << ": Failure in test #" << total << ": Function should return " << b << " but returned " << (*fun)(a) << "!" << endl;
             failed++;
         }
         return *this;
