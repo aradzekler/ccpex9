@@ -89,6 +89,7 @@ class TestCase
 
     void print()
     {
-        cout << testcase << ": " << failed << " failed, " << passed << " passed, " << total << " total." << endl;
+        stream << testcase << ": " << failed << " tests failed, " << passed << " tests passed, " << total << " total." << endl << endl;
+        cout << *this;
     }
 };
