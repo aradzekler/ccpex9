@@ -1,13 +1,12 @@
 #include "TestCase.hpp"
 
-TestCase::TestCase(string name , ostream& os):total(0),failed(0),passed(0),stream(os.rdbuf())
+TestCase::TestCase(string name , ostream& os):total(0),failed(0),passed(0),stream(os.rdbuf()),namecase(name)
 {
-    this->namecase = name;
 }
 
 void TestCase::print()
 {
-    stream << namecase << ": " << failed << " tests failed, " << passed << " tests passed, " << total << " total." << endl << endl;
+    stream << namecase << ": " << failed << " failed, " << passed << " passed, " << total << " total." << endl << endl;
     cout << *this;
 }
 
