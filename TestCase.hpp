@@ -32,7 +32,7 @@ class TestCase
         }
         else
         {
-            cout << testcase << " Failed. Failure in test number " << total << ". " << a << " is NOT equal to " << b << "." << endl;
+            stream << testcase << " Failed. Failure in test number " << total << ". " << a << " is NOT equal to " << b << "." << endl;
             failed++;
         }
         return *this;
@@ -48,7 +48,7 @@ class TestCase
         }
         else
         {
-            cout << testcase << " Failed. Failure in test number " << total << ". " << a << " is equal to " << b << "." << endl;
+            stream << testcase << " Failed. Failure in test number " << total << ". " << a << " is equal to " << b << "." << endl;
             failed++;
         }
         return *this;
@@ -66,7 +66,7 @@ class TestCase
         }
         else
         {
-            cout << testcase << " Failed. Failure in test number " << total << ". String should be " << b << " but is " << ss.str() << endl;
+            stream << testcase << " Failed. Failure in test number " << total << ". String should be " << b << " but is " << ss.str() << endl;
             failed++;
         }
         return *this;
@@ -82,7 +82,7 @@ class TestCase
         }
         else
         {
-            cout << testcase << " Failed. Failure in test number " << total << ". Function should return " << b << " but returned " << (*func)(a) << "." << endl;
+            stream << testcase << " Failed. Failure in test number " << total << ". Function should return " << b << " but returned " << (*func)(a) << "." << endl;
             failed++;
         }
         return *this;
