@@ -12,10 +12,12 @@ class TestCase
     ostream os;
     int total, failed, passed;
     friend ostream& operator<<(ostream& os, TestCase& obj);
+    void print();
 
     TestCase(string name, ostream &os) // constructor
     {
         testcase = name;
+        stream = os.rdbuf();
         total = 0;
         failed = 0;
         passed = 0;
@@ -85,11 +87,5 @@ class TestCase
             failed++;
         }
         return *this;
-    }
-
-    void print()
-    {
-        stream << testcase << ": " << failed << " tests failed, " << passed << " tests passed, " << total << " total." << endl << endl;
-        cout << *this;
     }
 };
